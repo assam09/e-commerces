@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SideBar.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import HomeIcon from "@mui/icons-material/Home";
+import { Delete, DeleteOutlined } from "@mui/icons-material";
 
 export default function SideBar() {
+  //changing the price
+  const [price, setPrice] = useState({
+    firstPrice: 1,
+    lastPrice: 1,
+  });
+
   return (
     <aside>
       <header>
@@ -11,20 +19,261 @@ export default function SideBar() {
           <HomeIcon></HomeIcon>
           <h2>Logo Brand</h2>
         </div>
-        <div className="price">
-          <p>Price</p>
+      </header>
 
-          <div className="setPrice d-flex flex-wrap">
-            <span className="startPrice btn btn-light">From 200$</span>
-            <span className="endPrice btn btn-light">UpTo 200$</span>
+      {/* price section */}
+      <section className="price">
+        <p>Price</p>
+
+        <div className="setPrice">
+          <div className="mb-3 firstPrice d-flex align-items-center flex-wrap">
+            <input
+              type="range"
+              name="firstPrice"
+              id=""
+              min={"1"}
+              max={"100"}
+              onChange={(e) =>
+                setPrice({ ...price, [e.target.name]: e.target.value })
+              }
+            />
+            <span className="mx-2 startPrice btn btn-light">
+              From {price.firstPrice}$
+            </span>
           </div>
 
-          <div className="priceRange">
-            <input type="range" name="startPrice" id="" min={"1"} max={"100"} />
-            <input type="range" name="endPrice" id="" min={"1"} max={"100"} />
+          <div className="mb-3 lastPrice d-flex align-items-center flex-wrap">
+            <input
+              type="range"
+              name="lastPrice"
+              id=""
+              min={price.firstPrice}
+              max={"1000"}
+              step={"1"}
+              onChange={(e) =>
+                setPrice({ ...price, [e.target.name]: e.target.value })
+              }
+            />
+            <span className="mx-2 endPrice btn btn-light">
+              UpTo {price.lastPrice}$
+            </span>
           </div>
         </div>
-      </header>
+      </section>
+
+      {/* category section */}
+      <section className="categorySelections">
+        {/* Theme select */}
+        <div className="accordion" id="themeAccordion">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="themeHeading">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#theme"
+                aria-expanded="true"
+                aria-controls="theme"
+              >
+                Theme
+              </button>
+            </h2>
+            <div
+              id="theme"
+              className="accordion-collapse collapse"
+              aria-labelledby="themeHeading"
+              data-bs-parent="#themeAccordion"
+            >
+              <div class="accordion-body">
+                This is the first item's accordion body.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* age select */}
+        <div className="accordion" id="ageAccordion">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="ageHeading">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#age"
+                aria-expanded="true"
+                aria-controls="age"
+              >
+                Age
+              </button>
+            </h2>
+            <div
+              id="age"
+              className="accordion-collapse collapse"
+              aria-labelledby="ageHeading"
+              data-bs-parent="#ageAccordion"
+            >
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="age"
+                    type="radio"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Up To Year
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="age"
+                    type="radio"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Up To Year
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="age"
+                    type="radio"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Up To Year
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    name="age"
+                    type="radio"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Up To Year
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Brand select */}
+        <div className="accordion" id="brandAccordion">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="brandHeading">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#brand"
+                aria-expanded="true"
+                aria-controls="brand"
+              >
+                Brand
+              </button>
+            </h2>
+            <div
+              id="brand"
+              className="accordion-collapse collapse"
+              aria-labelledby="brandHeading"
+              data-bs-parent="#brandAccordion"
+            >
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Brand 1
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Brand 2
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Brand 3
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Brand 4
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Characters */}
+        <div className="accordion" id="charactersAccordion">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="charactersHeading">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#characters"
+                aria-expanded="true"
+                aria-controls="characters"
+              >
+                Characters
+              </button>
+            </h2>
+            <div
+              id="characters"
+              className="accordion-collapse collapse"
+              aria-labelledby="charactersHeading"
+              data-bs-parent="#charactersAccordion"
+            >
+              <div class="accordion-body">
+                This is the first item's accordion body.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div className="applyChanges d-flex justify-content-between align-items-center">
+          <button className="btn btn-danger">Apply Filter</button>
+          <button className="btn btn-light">
+            <DeleteOutlined></DeleteOutlined>
+          </button>
+        </div>
+      </footer>
     </aside>
   );
 }

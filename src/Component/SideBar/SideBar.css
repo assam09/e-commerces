@@ -1,28 +1,14 @@
-.priceRange {
-  position: relative;
-}
-
-.priceRange input[type="range"] {
-  position: absolute;
-}
-
-.priceRange input[type="range"]:first-of-type {
-  left: 0;
-}
-
-.priceRange input[type="range"]:first-of-type {
-  right: 0;
+label {
+  min-width: 80px;
 }
 
 input[type="range"] {
   -webkit-appearance: none;
-  margin-right: 15px;
-  width: 200px;
   height: 7px;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 5px;
   background-image: linear-gradient(#ff4500, #ff4500);
-  background-size: 70% 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
@@ -42,4 +28,32 @@ input[type="range"]::-webkit-slider-runnable-track {
   box-shadow: none;
   border: none;
   background: transparent;
+}
+
+.categorySelections {
+  position: relative;
+}
+
+.accordion {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.accordion-button {
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+  color: black !important;
+}
+
+.accordion-collapse.show,
+.accordion-collapsing .show,
+.accordion-collapse {
+  max-width: 120px;
+}
+
+DeleteOutlined {
+  font-size: 30px;
 }
