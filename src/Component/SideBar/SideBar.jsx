@@ -4,6 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import HomeIcon from "@mui/icons-material/Home";
 import { Delete, DeleteOutlined } from "@mui/icons-material";
+import { inputRatioProps } from "../../Shared/elements";
 
 export default function SideBar() {
   //changing the price
@@ -11,6 +12,13 @@ export default function SideBar() {
     firstPrice: 1,
     lastPrice: 1,
   });
+
+  //input DRY
+  function repeatInput() {
+    for (let i = 0; i < 5; i++) {
+      <input {...inputRatioProps} />;
+    }
+  }
 
   return (
     <aside>
@@ -48,7 +56,7 @@ export default function SideBar() {
               name="lastPrice"
               id=""
               min={price.firstPrice}
-              max={"1000"}
+              max={"5000"}
               step={"1"}
               onChange={(e) =>
                 setPrice({ ...price, [e.target.name]: e.target.value })
@@ -85,7 +93,17 @@ export default function SideBar() {
               data-bs-parent="#themeAccordion"
             >
               <div class="accordion-body">
-                This is the first item's accordion body.
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Default checkbox
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -113,54 +131,27 @@ export default function SideBar() {
               data-bs-parent="#ageAccordion"
             >
               <div class="accordion-body">
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
-                    name="age"
                     type="radio"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Up To Year
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
                     name="age"
-                    type="radio"
-                    value=""
                     id=""
+                    className="form-check-input"
                   />
-                  <label class="form-check-label" for="">
-                    Up To Year
-                  </label>
+                  <label htmlFor="">1 year</label>
                 </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    name="age"
-                    type="radio"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Up To Year
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    name="age"
-                    type="radio"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Up To Year
-                  </label>
-                </div>
+                {[...Array(5).keys()].map((val) => {
+                  return (
+                    <div className="form-check">
+                      <input
+                        type="radio"
+                        name="age"
+                        className="form-check-input"
+                      />
+                      <label htmlFor="">Up To {(val + 1) * 5} Year</label>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -188,50 +179,14 @@ export default function SideBar() {
               data-bs-parent="#brandAccordion"
             >
               <div class="accordion-body">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Brand 1
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Brand 2
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Brand 3
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id=""
-                  />
-                  <label class="form-check-label" for="">
-                    Brand 4
-                  </label>
-                </div>
+                {[...Array(5).keys()].map((val) => {
+                  return (
+                    <div className="form-check">
+                      <input type="check-box" className="form-check-input" />
+                      <label htmlFor="check-box">Brand {val + 1}</label>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -270,7 +225,7 @@ export default function SideBar() {
         <div className="applyChanges d-flex justify-content-between align-items-center">
           <button className="btn btn-danger">Apply Filter</button>
           <button className="btn btn-light">
-            <DeleteOutlined></DeleteOutlined>
+            <DeleteOutlined titleAccess="Reset Changes"></DeleteOutlined>
           </button>
         </div>
       </footer>
