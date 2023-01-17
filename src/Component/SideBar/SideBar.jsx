@@ -3,8 +3,7 @@ import "./SideBar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import HomeIcon from "@mui/icons-material/Home";
-import { Delete, DeleteOutlined } from "@mui/icons-material";
-import { inputRatioProps } from "../../Shared/elements";
+import { DeleteOutlined } from "@mui/icons-material";
 
 export default function SideBar() {
   //changing the price
@@ -12,13 +11,6 @@ export default function SideBar() {
     firstPrice: 1,
     lastPrice: 1,
   });
-
-  //input DRY
-  function repeatInput() {
-    for (let i = 0; i < 5; i++) {
-      <input {...inputRatioProps} />;
-    }
-  }
 
   return (
     <aside>
