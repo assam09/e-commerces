@@ -3,7 +3,13 @@ import "./SideBar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import HomeIcon from "@mui/icons-material/Home";
-import { DeleteOutlined } from "@mui/icons-material";
+import {
+  ArrowForwardIos,
+  ArrowRight,
+  ArrowRightAltSharp,
+  ArrowRightSharp,
+  DeleteOutlined,
+} from "@mui/icons-material";
 
 export default function SideBar() {
   //changing the price
@@ -16,47 +22,59 @@ export default function SideBar() {
     <aside>
       <header>
         <div className="logo d-flex">
-          <HomeIcon></HomeIcon>
           <h2>Logo Brand</h2>
         </div>
       </header>
+
+      {/* page select */}
+      <section className="d-flex align-items-center">
+        <HomeIcon></HomeIcon>
+        <span>Main Page</span>
+        <ArrowForwardIos></ArrowForwardIos>
+        <span>Category</span>
+      </section>
 
       {/* price section */}
       <section className="price">
         <p>Price</p>
 
         <div className="setPrice">
-          <div className="mb-3 firstPrice d-flex align-items-center flex-wrap">
-            <input
-              type="range"
-              name="firstPrice"
-              id=""
-              min={"1"}
-              max={"100"}
-              onChange={(e) =>
-                setPrice({ ...price, [e.target.name]: e.target.value })
-              }
-            />
-            <span className="mx-2 startPrice btn btn-light">
-              From {price.firstPrice}$
-            </span>
-          </div>
-
-          <div className="mb-3 lastPrice d-flex align-items-center flex-wrap">
-            <input
-              type="range"
-              name="lastPrice"
-              id=""
-              min={price.firstPrice}
-              max={"5000"}
-              step={"1"}
-              onChange={(e) =>
-                setPrice({ ...price, [e.target.name]: e.target.value })
-              }
-            />
-            <span className="mx-2 endPrice btn btn-light">
-              UpTo {price.lastPrice}$
-            </span>
+          <div className="rangeSlider">
+            <div class="range-slider">
+              <span class="range-selected"></span>
+            </div>
+            <div class="range-input">
+              <input
+                type="range"
+                class="min"
+                name="firstPrice"
+                min="0"
+                max="1000"
+                value="300"
+                step="10"
+                onChange={(e) =>
+                  setPrice({ ...price, [e.target.name]: e.target.value })
+                }
+              />
+              <input
+                type="range"
+                class="max"
+                name="lastPrice"
+                min="0"
+                max="1000"
+                value="700"
+                step="10"
+                onChange={(e) =>
+                  setPrice({ ...price, [e.target.name]: e.target.value })
+                }
+              />
+            </div>
+            <div class="range-price">
+              <label for="min">Min</label>
+              <input type="number" name="min" value={price.firstPrice} />
+              <label for="max">Max</label>
+              <input type="number" name="max" value={price.lastPrice} />
+            </div>
           </div>
         </div>
       </section>
@@ -75,7 +93,7 @@ export default function SideBar() {
                 aria-expanded="true"
                 aria-controls="theme"
               >
-                Theme
+                Category
               </button>
             </h2>
             <div
@@ -93,7 +111,62 @@ export default function SideBar() {
                     id=""
                   />
                   <label class="form-check-label" for="">
-                    Default checkbox
+                    Sports
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Electronics
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Fashion
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Mens
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Womens
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id=""
+                  />
+                  <label class="form-check-label" for="">
+                    Kids
                   </label>
                 </div>
               </div>
@@ -179,34 +252,6 @@ export default function SideBar() {
                     </div>
                   );
                 })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Characters */}
-        <div className="accordion" id="charactersAccordion">
-          <div className="accordion-item">
-            <h2 className="accordion-header" id="charactersHeading">
-              <button
-                className="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#characters"
-                aria-expanded="true"
-                aria-controls="characters"
-              >
-                Characters
-              </button>
-            </h2>
-            <div
-              id="characters"
-              className="accordion-collapse collapse"
-              aria-labelledby="charactersHeading"
-              data-bs-parent="#charactersAccordion"
-            >
-              <div class="accordion-body">
-                This is the first item's accordion body.
               </div>
             </div>
           </div>
